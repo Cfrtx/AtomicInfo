@@ -123,16 +123,15 @@
         }
 
         .owner-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 10px;
+            font-size: 32px;
+            color: #bb86fc;
             cursor: pointer;
+            margin-bottom: 10px;
             transition: transform 0.3s ease;
         }
 
         .owner-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
         .owner-name {
@@ -269,12 +268,12 @@
         <!-- Owners Section -->
         <div class="owners-section">
             <div class="owner-card">
-                <img src="https://cdn.discordapp.com/avatars/1091759499574005790/a_1234567890abcdef1234567890abcdef.webp?size=256" alt="Vo1d" class="owner-icon" onclick="window.open('https://discord.com/users/1091759499574005790', '_blank')">
+                <i class="fab fa-discord owner-icon" onclick="window.open('https://discord.com/users/1091759499574005790', '_blank')"></i>
                 <div class="owner-name">Vo1d</div>
                 <div class="owner-role">Owner</div>
             </div>
             <div class="owner-card">
-                <img src="https://cdn.discordapp.com/avatars/735761883520565329/a_1234567890abcdef1234567890abcdef.webp?size=256" alt="Zen" class="owner-icon" onclick="window.open('https://discord.com/users/735761883520565329', '_blank')">
+                <i class="fab fa-discord owner-icon" onclick="window.open('https://discord.com/users/735761883520565329', '_blank')"></i>
                 <div class="owner-name">Zen</div>
                 <div class="owner-role">Owner</div>
             </div>
@@ -282,12 +281,13 @@
 
         <!-- Proof Section -->
         <div class="proof-section">
-            <div class="proof-title">Proof It's Not a Rat</div>
+            <div class="proof-title">Why Atomic is Flagged as Malware</div>
             <i class="fas fa-shield-alt proof-icon" onclick="toggleProofImage()"></i>
             <img src="https://media.discordapp.net/attachments/1351219676734165164/1351650695983665293/image.png?ex=67dd208e&is=67dbcf0e&hm=6a044b24311ee765f43e8b19ee550f32646df37669c4fb68c0fe2f53735468b5&=&format=webp&quality=lossless&width=1044&height=500" alt="Proof Image" class="proof-image" id="proofImage">
             <div class="proof-description" id="proofDescription">
-                Click the shield icon above to view proof that Atomic Executor is safe and not malicious.
+                Atomic Executor is flagged as <strong>Win64/Xgen</strong> by some antivirus programs because it injects into Roblox, which is a common behavior for executors. This is a <strong>false positive</strong>. It only edits Roblox files to enable scripting and does not harm your system. Compare this to other popular executors like <strong>Atlantis</strong> (60k+ users), which are also flagged but widely trusted. Don't call us a rat—this is how executors work!
             </div>
+            <img src="https://media.discordapp.net/attachments/1351219676734165164/1351650695702384710/image.png?ex=67dd208e&is=67dbcf0e&hm=efce075e71b8f3d71b20afa63e3bbbefc0e4f9df185d98ca9e9bc26d337b21e0&=&format=webp&quality=lossless&width=1086&height=467" alt="Atlantis Comparison" class="proof-image" id="atlantisImage" style="display: none;">
         </div>
 
         <!-- Support Section -->
@@ -319,12 +319,15 @@
         // Toggle proof image visibility
         function toggleProofImage() {
             const proofImage = document.getElementById('proofImage');
+            const atlantisImage = document.getElementById('atlantisImage');
             const proofDescription = document.getElementById('proofDescription');
             if (proofImage.style.display === 'none' || !proofImage.style.display) {
                 proofImage.style.display = 'block';
-                proofDescription.textContent = "This image proves that Atomic Executor is safe and not malicious.";
+                atlantisImage.style.display = 'block';
+                proofDescription.textContent = "Atomic Executor is flagged as Win64/Xgen by some antivirus programs because it injects into Roblox, which is a common behavior for executors. This is a false positive. It only edits Roblox files to enable scripting and does not harm your system. Compare this to other popular executors like Atlantis (60k+ users), which are also flagged but widely trusted. Don't call us a rat—this is how executors work!";
             } else {
                 proofImage.style.display = 'none';
+                atlantisImage.style.display = 'none';
                 proofDescription.textContent = "Click the shield icon above to view proof that Atomic Executor is safe and not malicious.";
             }
         }
