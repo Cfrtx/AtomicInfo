@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomic Executor - Info & Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Main Container */
+        .main-container {
+            background-color: rgba(26, 26, 26, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        /* Logo */
+        .logo {
+            width: 120px;
+            height: 120px;
+            background-image: url('https://media.discordapp.net/attachments/1350704655046283365/1350719684349136960/Atomic.png?ex=67dbb7bb&is=67da663b&hm=e3af0b448bfad52d68b089d0445923d3a8213622a8a1454f9e00cc4d04480318&=&format=webp&quality=lossless&width=280&height=280');
+            background-size: cover;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Title and Subtitle */
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #bb86fc, #03dac6, #ff0266);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        /* Info Section */
+        .info-section {
+            background-color: rgba(38, 38, 38, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #bb86fc;
+            margin-bottom: 15px;
+        }
+
+        .info-description {
+            font-size: 14px;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+
+        /* Owners Section */
+        .owners-section {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .owner-card {
+            background-color: rgba(38, 38, 38, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            width: 45%;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .owner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(187, 134, 252, 0.4);
+        }
+
+        .owner-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .owner-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .owner-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #bb86fc;
+            margin-bottom: 10px;
+        }
+
+        .owner-role {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        /* Proof Section */
+        .proof-section {
+            background-color: rgba(38, 38, 38, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .proof-icon {
+            font-size: 32px;
+            color: #bb86fc;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .proof-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .proof-image {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            animation: zoomIn 1s ease-in-out;
+            display: none; /* Hidden by default */
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .proof-description {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        /* Support Section */
+        .support-section {
+            background-color: rgba(38, 38, 38, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .support-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #bb86fc;
+            margin-bottom: 15px;
+        }
+
+        .support-description {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        .discord-button {
+            background-color: #bb86fc;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .discord-button:hover {
+            background-color: #9a67ea;
+            transform: scale(1.05);
+        }
+
+        /* Hidden Support Channel */
+        .hidden-channel {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hidden-channel a {
+            color: #bb86fc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hidden-channel a:hover {
+            color: #9a67ea;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Logo -->
+        <div class="logo"></div>
+
+        <!-- Title and Subtitle -->
+        <div class="title">Atomic Executor</div>
+        <div class="subtitle">Roblox Executor - Info & Support</div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <div class="info-title">About Atomic Executor</div>
+            <div class="info-description">
+                Atomic Executor is a high-performance Roblox scripting tool designed for developers and advanced users. With features like multi-attach, advanced security, and automatic updates, it provides a seamless experience for executing scripts in Roblox. If you encounter any issues, please join our Discord server and open a ticket for support.
+            </div>
+        </div>
+
+        <!-- Owners Section -->
+        <div class="owners-section">
+            <div class="owner-card">
+                <img src="https://cdn.discordapp.com/avatars/1091759499574005790/a_1234567890abcdef1234567890abcdef.webp?size=256" alt="Vo1d" class="owner-icon" onclick="window.open('https://discord.com/users/1091759499574005790', '_blank')">
+                <div class="owner-name">Vo1d</div>
+                <div class="owner-role">Owner</div>
+            </div>
+            <div class="owner-card">
+                <img src="https://cdn.discordapp.com/avatars/735761883520565329/a_1234567890abcdef1234567890abcdef.webp?size=256" alt="Zen" class="owner-icon" onclick="window.open('https://discord.com/users/735761883520565329', '_blank')">
+                <div class="owner-name">Zen</div>
+                <div class="owner-role">Owner</div>
+            </div>
+        </div>
+
+        <!-- Proof Section -->
+        <div class="proof-section">
+            <div class="proof-title">Proof It's Not a Rat</div>
+            <i class="fas fa-shield-alt proof-icon" onclick="toggleProofImage()"></i>
+            <img src="https://media.discordapp.net/attachments/1351219676734165164/1351650695983665293/image.png?ex=67dd208e&is=67dbcf0e&hm=6a044b24311ee765f43e8b19ee550f32646df37669c4fb68c0fe2f53735468b5&=&format=webp&quality=lossless&width=1044&height=500" alt="Proof Image" class="proof-image" id="proofImage">
+            <div class="proof-description" id="proofDescription">
+                Click the shield icon above to view proof that Atomic Executor is safe and not malicious.
+            </div>
+        </div>
+
+        <!-- Support Section -->
+        <div class="support-section">
+            <div class="support-title">Need Help?</div>
+            <div class="support-description">
+                If you're having issues with the executor, join our Discord server first to access the support channel.
+            </div>
+            <a href="https://discord.gg/KEQ6pwdftE" class="discord-button" target="_blank">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+            <div class="hidden-channel" id="hiddenChannel">
+                <a href="https://discord.com/channels/1349993516931219476/1350730026294706177" target="_blank">Open Support Ticket</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show hidden support channel after joining Discord
+        const discordButton = document.querySelector('.discord-button');
+        const hiddenChannel = document.getElementById('hiddenChannel');
+
+        discordButton.addEventListener('click', () => {
+            setTimeout(() => {
+                hiddenChannel.style.display = 'block';
+            }, 1000); // Simulate delay for joining Discord
+        });
+
+        // Toggle proof image visibility
+        function toggleProofImage() {
+            const proofImage = document.getElementById('proofImage');
+            const proofDescription = document.getElementById('proofDescription');
+            if (proofImage.style.display === 'none' || !proofImage.style.display) {
+                proofImage.style.display = 'block';
+                proofDescription.textContent = "This image proves that Atomic Executor is safe and not malicious.";
+            } else {
+                proofImage.style.display = 'none';
+                proofDescription.textContent = "Click the shield icon above to view proof that Atomic Executor is safe and not malicious.";
+            }
+        }
+    </script>
+</body>
+</html>
